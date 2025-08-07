@@ -1,11 +1,13 @@
 from flask import Flask, request, jsonify
 import joblib
 import pandas as pd
+import os
 
 app = Flask(__name__)
 
 # Charger le modèle
-model = joblib.load("C:/Users/elbah/Desktop/FlaskApi/results/best_model_RandomForest_target_encoded.pkl")
+model_path = os.path.join(os.path.dirname(__file__), "results", "best_model_RandomForest_target_encoded.pkl")
+model = joblib.load(model_path)
 
 # Route d'accueil
 @app.route("/")
